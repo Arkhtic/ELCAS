@@ -24,49 +24,20 @@
             margin-top: 20px;
         }
 
-        .countdown {
+        .contact {
             font-size: 24px;
-            margin-top: 30px;
             color: #ddd; /* Grey */
+            margin-top: 30px;
         }
     </style>
 </head>
 <body>
     <img src="ELCASWHITE.png" alt="Company Logo" style="width: 300px;"> <!-- Adjust the width for logo enlargement -->
-    <h1>Coming Soons</h1>
+    <h1>Coming Soon</h1>
     <p>We are working hard to bring you the best laser cleaning services.</p>
     
-    <div class="countdown" id="countdown">
-        <span id="days">00</span> days
-        <span id="hours">00</span> hours
-        <span id="minutes">00</span> minutes
-        <span id="seconds">00</span> seconds
+    <div class="contact">
+        Contact us: <a href="mailto:shaun@elcaslaser.co.za" style="color: #ff2b2b;">shaun@elcaslaser.co.za</a>
     </div>
-
-    <script>
-        // Set the date we're counting down to
-        const countDownDate = new Date("2023-12-31 00:00:00").getTime();
-
-        // Update the countdown every 1 second
-        const x = setInterval(function() {
-            const now = new Date().getTime();
-            const distance = countDownDate - now;
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById("days").innerText = days;
-            document.getElementById("hours").innerText = hours;
-            document.getElementById("minutes").innerText = minutes;
-            document.getElementById("seconds").innerText = seconds;
-
-            if (distance < 0) {
-                clearInterval(x);
-                document.getElementById("countdown").innerHTML = "We're here!";
-            }
-        }, 1000);
-    </script>
 </body>
 </html>
