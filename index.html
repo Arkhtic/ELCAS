@@ -12,21 +12,6 @@
             padding: 100px 0;
             color: #fff;
         }
-
-        #particles-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .particle {
-            position: absolute;
-            background-color: #ff2b2b; /* Red */
-            border-radius: 50%;
-            pointer-events: none;
-        }
         
         h1 {
             font-size: 36px;
@@ -53,43 +38,5 @@
     
     <div class="contact">
         Contactt us: <a href="mailto:shaun@elcaslaser.co.za" style="color: #ff2b2b;">shaun@elcaslaser.co.za</a>
-    </div>
-    <div id="particles-container"></div>
-
-    <script>
-        const container = document.getElementById("particles-container");
-
-        // Create particles
-        for (let i = 0; i < 50; i++) {
-            createParticle();
-        }
-
-        // Function to create a particle
-        function createParticle() {
-            const particle = document.createElement("div");
-            particle.className = "particle";
-            container.appendChild(particle);
-
-            // Set initial position
-            const initialX = Math.random() * window.innerWidth;
-            const initialY = Math.random() * window.innerHeight;
-            particle.style.left = initialX + "px";
-            particle.style.top = initialY + "px";
-
-            // Add mousemove event listener for interactive effect
-            document.addEventListener("mousemove", (e) => {
-                const mouseX = e.clientX;
-                const mouseY = e.clientY;
-
-                const deltaX = mouseX - initialX;
-                const deltaY = mouseY - initialY;
-                const angle = Math.atan2(deltaY, deltaX);
-                const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-
-                // Update particle position based on mouse pointer
-                particle.style.transform = `translate(${distance * Math.cos(angle)}px, ${distance * Math.sin(angle)}px)`;
-            });
-        }
-    </script>
 </body>
 </html>
