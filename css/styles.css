@@ -4,6 +4,7 @@ body {
     text-align: center;
     padding: 100px 0;
     color: #fff;
+    margin: 0;
 }
 
 h1 {
@@ -21,4 +22,18 @@ p {
     font-size: 24px;
     color: #ddd; /* Grey */
     margin-top: 30px;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+canvas {
+  max-width: 100%;
+  background-color: #333;
 }
