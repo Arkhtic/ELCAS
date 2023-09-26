@@ -3,41 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon - Laser Cleaning Company</title>
+    <title>Interactive Particle Effect</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #333;
-            text-align: center;
-            padding: 100px 0;
-            color: #fff;
+            margin: 0;
+            overflow: hidden;
         }
 
-        h1 {
-            font-size: 36px;
-            color: #ff2b2b; /* Red */
+        #particles-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
 
-        p {
-            font-size: 18px;
-            color: #999;
-            margin-top: 20px;
-        }
-
-        .contact {
-            font-size: 24px;
-            color: #ddd; /* Grey */
-            margin-top: 30px;
+        .particle {
+            position: absolute;
+            background-color: #ff2b2b; /* Red */
+            border-radius: 50%;
+            pointer-events: none;
+            transition: transform 0.2s ease; /* Add smooth transition effect */
         }
     </style>
 </head>
 <body>
-    <img src="ELCASWHITE.png" alt="Company Logo" style="width: 300px;"> <!-- Adjust the width for logo enlargement -->
-    <h1>Coming Soon</h1>
-    <p>We are working hard to bring you the best laser cleaning services.</p>
-    
-    <div class="contact">
-        Contact us: <a href="mailto:shaun@elcaslaser.co.za" style="color: #ff2b2b;">shaun@elcaslaser.co.za</a>
-    </div>
+    <div id="particles-container"></div>
+
+    <script>
+        const container = document.getElementById("particles-container");
+
+        // Create particles
+        for (let i = 0; i < 50; i++) {
+            createParticle();
+        }
+
+        // Function to create a particle
+        function createParticle() {
+            const particle = document.createElement("div");
+            particle.className = "particle";
+            container.appendChild(particle);
+
+            // Set initial position
+            const initialX = Math.random() * window.innerWidth;
+            const initialY = Math.random() * window.innerHeight;
+            particle.style.left = initialX + "px";
+            particle.style.top = initialY + "px";
+
+            // Function to update particle position based on mouse pointer
+            function updateParticlePosition(e) {
+                const mouseX = e.clientX;
+                const mouseY = e.clientY;
+
+                const deltaX = mouseX - initialX;
+                const deltaY = mouseY - initialY;
+                const angle = Math.atan2(deltaY, deltaX);
+                const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+                // Update particle position based on mouse pointer
+                particle.style.transform = `translate(${distance * Math.cos(angle)}px, ${distance * Math.sin(angle)}px)`;
+            }
+
+            // Add mousemove event listener for interactive effect
+            document.addEventListener("mousemove", updateParticlePosition);
+
+            // Remove the event listener when the particle is removed (optional)
+            particle.addEventListener("animationend", () => {
+                document.removeEventListener("mousemove", updateParticlePosition);
+                particle.remove();
+                createParticle(); // Recreate particle for continuous effect
+            });
+        }
+    </script>
 </body>
 </html>
